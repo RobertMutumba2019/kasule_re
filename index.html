@@ -6,12 +6,16 @@
 <title>Rent Payment Receipt | Kasule Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Arimo:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0d5089;
-    --ink: #111;
-    --line: #222;
+    --navy: #0d4f8b;
+    --navy-dark: #0a3866;
+    --sky: #1aa3dc;
+    --ink: #1b2430;
+    --muted: #64748b;
+    --line: #c5d0dc;
+    --soft: #f2f7fc;
     --paper: #fff;
   }
 
@@ -19,205 +23,15 @@
 
   body {
     margin: 0;
-    padding: 24px 16px;
-    background: #e9edf2;
-    font-family: "Arimo", Arial, Helvetica, sans-serif;
+    padding: 24px 16px 40px;
+    background: #e6ebf1;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
     color: var(--ink);
-  }
-
-  .receipt {
-    width: 1100px;
-    max-width: 100%;
-    margin: 0 auto;
-    background: var(--paper);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
-    padding-bottom: 24px;
-  }
-
-  /* ---------- Header ---------- */
-  .header {
-    display: grid;
-    grid-template-columns: 190px 1fr;
-    align-items: center;
-    gap: 20px;
-    padding: 8px 32px 6px 36px;
-  }
-
-  .logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .brand { text-align: center; }
-
-  .brand h1 {
-    margin: 0;
-    font-family: "Archivo Black", "Arial Black", sans-serif;
-    font-size: 36px;
-    letter-spacing: 1px;
-    line-height: 1.1;
-  }
-
-  .brand .tagline {
-    margin: 0 0 8px;
-    color: var(--navy);
-    font-style: italic;
-    font-size: 22px;
-  }
-
-  .contacts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px 18px;
-    font-size: 16px;
-    line-height: 1.4;
-    white-space: nowrap;
-  }
-
-  .contacts .divider {
-    width: 3px;
-    height: 20px;
-    border-radius: 2px;
-    background: var(--navy);
-  }
-
-  .banner {
-    background: var(--navy);
-    color: #fff;
-    text-align: center;
-    font-family: "Archivo Black", "Arial Black", sans-serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    padding: 4px 0 2px;
-  }
-
-  /* ---------- Body ---------- */
-  .content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 400px;
-    gap: 0 28px;
-    padding: 20px 24px 0 30px;
-  }
-
-  .top-row {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 18px;
-    font-size: 18px;
-  }
-
-  .field {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    font-size: 21px;
-    margin-bottom: 20px;
-    white-space: nowrap;
-  }
-
-  .field.label-only { margin-bottom: 14px; }
-
-  input.blank {
-    flex: 1;
-    min-width: 40px;
-    border: 0;
-    border-bottom: 1.5px solid var(--line);
-    background: transparent;
-    font: inherit;
-    font-size: .95em;
-    padding: 0 4px 1px;
-    color: #0b3d6b;
-    outline: none;
-  }
-
-  input.blank:focus { border-bottom-color: var(--navy); background: #f2f7fc; }
-
-  input.short { flex: 0 0 120px; }
-  input.date-d, input.date-m { flex: 0 1 72px; text-align: center; }
-  input.date-y { flex: 0 1 92px; text-align: center; }
-  .payment-date input.date-d { flex: 0 1 100px; }
-  .payment-date input.date-m { flex: 0 1 180px; }
-  .payment-date input.date-y { flex: 0 1 190px; }
-  .issued input.date-d { flex: 0 1 72px; }
-  .issued input.date-m, .issued input.date-y { flex: 0 1 92px; }
-
-  .sep { padding-bottom: 2px; }
-
-  /* ---------- Payment summary ---------- */
-  .summary { padding-top: 2px; }
-
-  .summary h2 {
-    margin: 0 0 14px;
-    background: var(--navy);
-    color: #fff;
-    font-weight: 400;
-    font-size: 22px;
-    padding: 10px 16px;
-  }
-
-  .summary .row {
-    display: grid;
-    grid-template-columns: 1fr 215px;
-    align-items: flex-end;
-    padding: 0 12px;
-    margin-bottom: 18px;
-    font-size: 21px;
-  }
-
-  .summary .money {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-  }
-
-  .summary .money input { text-align: right; }
-
-  .summary .row.total { font-weight: 600; }
-
-  .note {
-    margin: 6px 22px 0;
-    border: 3px solid var(--navy);
-    border-radius: 8px;
-    padding: 10px 14px;
-    text-align: center;
-    font-size: 15.5px;
-    line-height: 1.35;
-  }
-
-  .sign-row {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1.55fr 1fr;
-    gap: 14px;
-    margin-top: 44px;
-  }
-
-  .sign-row .field { margin-bottom: 0; }
-
-  .sig-line {
-    flex: 1;
-    min-width: 40px;
-    height: 34px;
-    border-bottom: 1.5px solid var(--line);
-    position: relative;
-  }
-
-  .sig-line img {
-    position: absolute;
-    left: 24px;
-    bottom: -16px;
-    height: 84px;
-    width: auto;
   }
 
   /* ---------- Toolbar ---------- */
   .toolbar {
-    width: 1100px;
-    max-width: 100%;
+    max-width: 1100px;
     margin: 0 auto 14px;
     display: flex;
     justify-content: flex-end;
@@ -225,225 +39,583 @@
   }
 
   .toolbar button {
-    font: 600 15px "Arimo", Arial, sans-serif;
-    border: 0;
-    border-radius: 6px;
-    padding: 9px 18px;
+    font: 600 14px "Inter", Arial, sans-serif;
+    border: 1.5px solid var(--navy);
+    border-radius: 8px;
+    padding: 9px 20px;
     cursor: pointer;
     background: var(--navy);
     color: #fff;
   }
 
-  .toolbar button.secondary { background: #fff; color: var(--navy); border: 1.5px solid var(--navy); }
+  .toolbar button:hover { background: var(--navy-dark); }
+  .toolbar button.secondary { background: #fff; color: var(--navy); }
+  .toolbar button.secondary:hover { background: var(--soft); }
 
-  /* On desktop/print the date groups don't affect layout */
-  .date-group { display: contents; }
+  /* ---------- Receipt card ---------- */
+  .receipt {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(13, 40, 70, .12);
+    position: relative;
+  }
 
-  /* ---------- Tablet (screen only, print is untouched) ---------- */
+  /* ---------- Header ---------- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 36px 16px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;               /* logo sits close to the name */
+  }
+
+  .brand img {
+    width: 120px;
+    height: auto;
+    display: block;
+  }
+
+  .brand h1 {
+    margin: 0;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: 1.5px;
+    line-height: 1.05;
+    color: var(--navy-dark);
+  }
+
+  .brand .tagline {
+    margin: 6px 0 0;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--sky);
+    font-weight: 500;
+  }
+
+  .contact {
+    display: grid;
+    gap: 7px;
+    font-size: 14px;
+    color: var(--ink);
+    border-left: 3px solid var(--sky);
+    padding-left: 16px;
+  }
+
+  .contact div { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+
+  .contact svg {
+    width: 26px;
+    height: 26px;
+    padding: 6px;
+    border-radius: 50%;
+    background: var(--navy);
+    fill: #fff;
+    flex: none;
+  }
+
+  .accent {
+    height: 5px;
+    background: linear-gradient(90deg, var(--navy-dark), var(--navy) 45%, var(--sky));
+  }
+
+  /* ---------- Title bar ---------- */
+  .titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 28px;
+    flex-wrap: wrap;
+    padding: 16px 36px;
+    background: var(--soft);
+    border-bottom: 1px solid #e1e8f0;
+  }
+
+  .titlebar h2 {
+    margin: 0;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: var(--navy);
+    text-transform: uppercase;
+  }
+
+  .meta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 12px;
+  }
+
+  .chip span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .chip input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: 600 16px "Inter", Arial, sans-serif;
+    color: var(--navy-dark);
+    width: 120px;
+    padding: 0;
+  }
+
+  /* ---------- Body ---------- */
+  .content {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 390px;
+    gap: 32px;
+    padding: 22px 36px 6px;
+  }
+
+  /* faint logo watermark */
+  .content::before {
+    content: "";
+    position: absolute;
+    inset: 10px 0 0 0;
+    background: url("kasule-logo.png") center 40% / 300px auto no-repeat;
+    opacity: .05;
+    pointer-events: none;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dfe6ee;
+  }
+
+  .section-label + .grid, .grid + .section-label { margin-top: 0; }
+  .grid + .section-label { margin-top: 18px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+
+  .grid .full { grid-column: 1 / -1; }
+
+  .field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+  .field > span {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  input.blank {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    border-bottom: 1.5px solid var(--line);
+    background: transparent;
+    font: 500 17px "Inter", Arial, sans-serif;
+    color: var(--navy-dark);
+    padding: 5px 2px 5px;
+    outline: none;
+    transition: border-color .15s, background .15s;
+  }
+
+  input.blank:focus,
+  .chip:focus-within { border-color: var(--sky); }
+  input.blank:focus { background: var(--soft); }
+  input::placeholder { color: #a9b6c4; font-weight: 400; }
+
+  /* ---------- Payment summary ---------- */
+  .summary {
+    position: relative;
+    border: 1px solid #dbe3ec;
+    border-radius: 10px;
+    overflow: hidden;
+    align-self: start;
+    background: #fff;
+  }
+
+  .summary h3 {
+    margin: 0;
+    padding: 11px 18px;
+    background: var(--navy);
+    color: #fff;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .summary .rows { padding: 6px 18px 4px; }
+
+  .summary .row {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 200px);
+    align-items: end;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px dashed #e1e7ee;
+    font-size: 15.5px;
+  }
+
+  .summary .row:last-child { border-bottom: 0; }
+
+  .money { display: flex; align-items: flex-end; gap: 6px; }
+  .money small { font-size: 12px; font-weight: 700; color: var(--muted); padding-bottom: 7px; }
+  .money input.blank { text-align: right; }
+
+  .total {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 220px);
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: linear-gradient(90deg, var(--navy-dark), var(--navy));
+    color: #fff;
+  }
+
+  .total > span {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .total .money small { color: #bcd6ee; padding-bottom: 5px; }
+  .total input.blank {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+    border-bottom-color: rgba(255, 255, 255, .45);
+  }
+  .total input.blank:focus { background: rgba(255, 255, 255, .1); }
+
+  .words { display: block; padding: 10px 18px 12px; background: var(--soft); }
+  .words span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .words input.blank { font-size: 14px; font-style: italic; font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 390px;
+    gap: 32px;
+    align-items: end;
+    padding: 18px 36px 22px;
+  }
+
+  .sig-line {
+    position: relative;
+    height: 58px;
+    border-bottom: 1.5px solid var(--line);
+  }
+
+  .sig-line img {
+    position: absolute;
+    left: 18px;
+    bottom: -8px;
+    height: 64px;
+    width: auto;
+  }
+
+  .note {
+    margin: 0;
+    padding: 11px 14px;
+    border-left: 4px solid var(--sky);
+    background: var(--soft);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #334155;
+  }
+
+  .strip {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px 20px;
+    flex-wrap: wrap;
+    padding: 9px 36px;
+    background: var(--navy-dark);
+    color: #cfe2f4;
+    font-size: 12.5px;
+  }
+  .strip b { color: #fff; font-weight: 600; }
+
+  /* ---------- Tablet ---------- */
   @media screen and (max-width: 900px) {
-    body { padding: 16px 12px; }
-    .header { grid-template-columns: 140px 1fr; padding: 10px 20px; gap: 16px; }
-    .brand h1 { font-size: 30px; }
-    .brand .tagline { font-size: 19px; }
-    .contacts { font-size: 15px; }
-    .banner { font-size: 22px; }
-
-    /* Stack the Payment Summary under the details instead of beside them */
-    .content { grid-template-columns: minmax(0, 1fr); padding: 18px 20px 0; }
-    .summary { margin-top: 8px; }
-    .field, .summary .row { font-size: 18px; }
+    body { padding: 16px 12px 32px; }
+    .header { padding: 16px 22px 14px; }
+    .brand img { width: 96px; }
+    .brand h1 { font-size: 27px; }
+    .brand .tagline { font-size: 14px; }
+    .contact { font-size: 13px; }
+    .titlebar, .content, .footer, .strip { padding-left: 22px; padding-right: 22px; }
+    .content { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .footer { grid-template-columns: 1fr 1fr; }
+    .footer .note { grid-column: 1 / -1; order: -1; }
   }
 
   /* ---------- Phone ---------- */
   @media screen and (max-width: 600px) {
-    body { padding: 12px 8px; }
+    body { padding: 10px 8px 24px; }
     .toolbar button { flex: 1; }
+    .receipt { border-radius: 8px; }
 
-    .header { grid-template-columns: 1fr; justify-items: center; gap: 6px; padding: 12px 16px 8px; }
-    .logo { width: 110px; }
-    .brand h1 { font-size: 24px; }
-    .brand .tagline { font-size: 16px; margin-bottom: 6px; }
-    .contacts { flex-direction: column; gap: 2px; font-size: 14px; white-space: normal; }
-    .contacts .divider { display: none; }
-    .banner { font-size: 17px; letter-spacing: 1px; padding: 6px 0 4px; }
+    .header { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
+    .brand { justify-content: center; gap: 10px; }
+    .brand img { width: 72px; }
+    .brand h1 { font-size: 21px; letter-spacing: 1px; }
+    .brand .tagline { font-size: 12.5px; margin-top: 4px; }
+    .contact { border-left: 0; border-top: 1px solid #e1e8f0; padding: 12px 0 0; justify-items: center; font-size: 13px; }
+    .contact svg { width: 22px; height: 22px; padding: 5px; }
 
-    .content { padding: 16px 14px 0; }
-    .top-row { flex-direction: column; gap: 14px; font-size: 16px; }
+    .titlebar, .content, .footer, .strip { padding-left: 16px; padding-right: 16px; }
+    .titlebar { justify-content: center; text-align: center; }
+    .titlebar h2 { font-size: 17px; letter-spacing: 2px; }
+    .meta { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .chip { flex-direction: column; align-items: flex-start; gap: 2px; padding: 6px 10px; }
+    .chip input { width: 100%; }
 
-    /* Let fields wrap: the label sits above full-width text inputs */
-    .field { flex-wrap: wrap; white-space: normal; font-size: 16px; margin-bottom: 16px; gap: 4px 6px; }
-    .field > input.blank:not(.date-d):not(.date-m):not(.date-y) { flex: 1 1 100%; }
+    .content::before { background-size: 200px auto; }
+    .grid { grid-template-columns: 1fr; gap: 14px; }
+    input.blank { font-size: 16px; }      /* 16px stops iOS zooming on focus */
 
-    /* 16px inputs stop iPhones zooming in on tap */
-    input.blank { font-size: 16px; padding-bottom: 3px; }
+    .summary .rows { padding: 4px 14px; }
+    .summary .row { grid-template-columns: 1fr minmax(0, 60%); font-size: 15px; }
+    .total { grid-template-columns: 1fr minmax(0, 62%); padding: 12px 14px; }
+    .total > span { font-size: 14px; }
+    .total input.blank { font-size: 18px; }
+    .words { padding: 10px 14px; }
 
-    /* Date boxes share the available width */
-    .field input.date-d, .field input.date-m, .field input.date-y,
-    .payment-date input.date-d, .payment-date input.date-m, .payment-date input.date-y,
-    .issued input.date-d, .issued input.date-m, .issued input.date-y { flex: 1 1 0; min-width: 0; }
-
-    /* Payment period: "From" date and "to" date on their own lines */
-    .period .date-group { display: flex; align-items: flex-end; gap: 6px; width: 100%; }
-    .period .date-label { flex: 0 0 42px; padding: 0 0 2px !important; }
-
-    .summary h2 { font-size: 18px; padding: 8px 12px; }
-    .summary .row { grid-template-columns: 1fr minmax(0, 58%); font-size: 16px; padding: 0 4px; margin-bottom: 14px; }
-    .summary .money input { min-width: 0; }
-    .note { margin: 6px 0 0; font-size: 14px; }
-
-    .sign-row { grid-template-columns: 1fr; gap: 28px; margin-top: 28px; }
-    .sig-line img { height: 64px; bottom: -12px; left: 12px; }
+    .footer { grid-template-columns: 1fr; gap: 22px; }
+    .strip { justify-content: center; text-align: center; font-size: 12px; }
   }
 
-  /* ---------- Print ---------- */
-  @page { size: A4 landscape; margin: 8mm; }
+  /* ---------- Print (one A4 landscape page) ---------- */
+  @page { size: A4 landscape; margin: 7mm; }
 
   @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     body { background: #fff; padding: 0; }
     .toolbar { display: none; }
-    .receipt { box-shadow: none; width: 100%; padding-bottom: 0; }
+    .receipt { max-width: none; box-shadow: none; border: 1px solid #dbe3ec; break-inside: avoid; }
+    input::placeholder { color: transparent; }
     input.blank:focus { background: transparent; }
-    .banner, .summary h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
-    /* Compact layout so the whole receipt fits on one A4 landscape page */
-    html, body { height: auto; }
-    .receipt { break-inside: avoid; page-break-inside: avoid; }
-    .header { grid-template-columns: 180px 1fr; padding: 6px 24px 6px 28px; gap: 18px; }    .brand h1 { font-size: 34px; }
-    .brand .tagline { font-size: 20px; margin: 0 0 8px; }
-    .contacts { font-size: 14px; line-height: 1.4; }
-    .banner { font-size: 26px; padding: 4px 0 2px; }
-    .content { padding: 18px 20px 0 24px; }
-    .top-row { margin-bottom: 16px; }
-    .field { font-size: 18px; margin-bottom: 20px; }
-    .field.label-only { margin-bottom: 14px; }
-    .details label.field[style] { margin-top: 24px !important; }
-    .summary h2 { font-size: 19px; padding: 7px 14px; margin-bottom: 10px; }
-    .summary .row { font-size: 18px; margin-bottom: 18px; }
-    .note { font-size: 13.5px; padding: 8px 12px; }
-    .sign-row { margin-top: 48px; }
-    .sig-line { height: 28px; }
-    .sig-line img { height: 72px; bottom: -14px; }
   }
 </style>
 </head>
 <body>
 
 <div class="toolbar">
-  <button type="button" class="secondary" onclick="document.getElementById('receipt-form').reset(); updateTotal();">Clear</button>
+  <button type="button" class="secondary" id="clear-btn">Clear</button>
   <button type="button" onclick="window.print()">Print receipt</button>
 </div>
 
 <form class="receipt" id="receipt-form" autocomplete="off" onsubmit="return false">
 
   <header class="header">
-    <div class="logo">
-      <img src="kasule-logo.png" alt="Kasule Estates logo">
-    </div>
     <div class="brand">
-      <h1>KASULE ESTATE</h1>
-      <p class="tagline">"Making your dream come true"</p>
-      <div class="contacts">
-        <span>📞 +256 771 856 925 / +256 702 554 664</span>
-        <span class="divider"></span>
-        <span>📧 rodgers.kasule@outlook.com</span>
+      <img src="kasule-logo.png" alt="Kasule Estates logo">
+      <div>
+        <h1>KASULE ESTATE</h1>
+        <p class="tagline">“Making your dream come true”</p>
+      </div>
+    </div>
+    <div class="contact">
+      <div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        <span>+256 771 856 925 &nbsp;/&nbsp; +256 702 554 664</span>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>rodgers.kasule@outlook.com</span>
       </div>
     </div>
   </header>
+  <div class="accent"></div>
 
-  <div class="banner">RENT PAYMENT RECEIPT</div>
+  <div class="titlebar">
+    <h2>Rent Payment Receipt</h2>
+    <div class="meta">
+      <label class="chip"><span>Receipt No.</span><input name="receipt_no" placeholder="0001"></label>
+      <label class="chip"><span>Date Issued</span><input class="date" name="date_issued" id="date-issued" placeholder="DD/MM/YYYY" inputmode="numeric"></label>
+    </div>
+  </div>
 
   <div class="content">
-
-    <div class="top-row">
-      <label class="field" style="margin:0">Receipt No.:
-        <input class="blank short" name="receipt_no">
-      </label>
-      <div class="field issued" style="margin:0">Date Issued:
-        <input class="blank date-d" name="issued_day" aria-label="Day issued">
-        <span class="sep">/</span>
-        <input class="blank date-m" name="issued_month" aria-label="Month issued">
-        <span class="sep">/</span>
-        <input class="blank date-y" name="issued_year" aria-label="Year issued">
-      </div>
-    </div>
-
-    <div class="details">
-      <label class="field">Tenant Name: <input class="blank" name="tenant_name"></label>
-      <label class="field">Rental Property Address: <input class="blank" name="property_address"></label>
-
-      <div class="field label-only">Payment Period:</div>
-      <div class="field period">
-        <span class="date-group"><span class="date-label">From</span>
-          <input class="blank date-d" name="from_day" aria-label="From day">
-          <span class="sep">/</span>
-          <input class="blank date-m" name="from_month" aria-label="From month">
-          <span class="sep">/</span>
-          <input class="blank date-y" name="from_year" aria-label="From year">
-        </span>
-        <span class="date-group"><span class="date-label" style="padding:0 4px 2px">to</span>
-          <input class="blank date-d" name="to_day" aria-label="To day">
-          <span class="sep">/</span>
-          <input class="blank date-m" name="to_month" aria-label="To month">
-          <span class="sep">/</span>
-          <input class="blank date-y" name="to_year" aria-label="To year">
-        </span>
+    <section class="details">
+      <div class="section-label">Tenant &amp; Property</div>
+      <div class="grid">
+        <label class="field full"><span>Tenant Name</span><input class="blank" name="tenant_name" placeholder="Full name"></label>
+        <label class="field full"><span>Rental Property Address</span><input class="blank" name="property_address" placeholder="Unit / house, street, area"></label>
       </div>
 
-      <label class="field" style="margin-top:24px">Payment Method: <input class="blank" name="payment_method"></label>
-
-      <div class="field payment-date">Payment Date:
-        <input class="blank date-d" name="pay_day" aria-label="Payment day">
-        <span class="sep">/</span>
-        <input class="blank date-m" name="pay_month" aria-label="Payment month">
-        <span class="sep">/</span>
-        <input class="blank date-y" name="pay_year" aria-label="Payment year">
+      <div class="section-label">Payment Details</div>
+      <div class="grid">
+        <label class="field"><span>Period From</span><input class="blank date" name="period_from" placeholder="DD/MM/YYYY" inputmode="numeric"></label>
+        <label class="field"><span>Period To</span><input class="blank date" name="period_to" placeholder="DD/MM/YYYY" inputmode="numeric"></label>
+        <label class="field"><span>Payment Method</span><input class="blank" name="payment_method" list="methods" placeholder="Cash, Mobile Money, Bank…"></label>
+        <label class="field"><span>Payment Date</span><input class="blank date" name="payment_date" placeholder="DD/MM/YYYY" inputmode="numeric"></label>
       </div>
-    </div>
+      <datalist id="methods">
+        <option value="Cash"><option value="Mobile Money"><option value="Bank Transfer"><option value="Cheque">
+      </datalist>
+    </section>
 
     <aside class="summary">
-      <h2>💵 Payment Summary</h2>
-      <div class="row"><span>Monthly Rent</span>
-        <span class="money">UGX <input class="blank amount" name="monthly_rent" inputmode="decimal"></span></div>
-      <div class="row"><span>Late Fee</span>
-        <span class="money">UGX <input class="blank amount" name="late_fee" inputmode="decimal"></span></div>
-      <div class="row"><span>Other Charges</span>
-        <span class="money">UGX <input class="blank amount" name="other_charges" inputmode="decimal"></span></div>
-      <div class="row total"><span>Total Paid</span>
-        <span class="money">UGX <input class="blank" name="total_paid" id="total" inputmode="decimal"></span></div>
-      <p class="note">This is to confirm receipt of rent payment for the period stated above. Please retain this receipt for your records.</p>
+      <h3>Payment Summary</h3>
+      <div class="rows">
+        <div class="row"><span>Monthly Rent</span>
+          <span class="money"><small>UGX</small><input class="blank amount" name="monthly_rent" inputmode="decimal"></span></div>
+        <div class="row"><span>Late Fee</span>
+          <span class="money"><small>UGX</small><input class="blank amount" name="late_fee" inputmode="decimal"></span></div>
+        <div class="row"><span>Other Charges</span>
+          <span class="money"><small>UGX</small><input class="blank amount" name="other_charges" inputmode="decimal"></span></div>
+      </div>
+      <div class="total"><span>Total Paid</span>
+        <span class="money"><small>UGX</small><input class="blank" name="total_paid" id="total" inputmode="decimal"></span></div>
+      <label class="words"><span>Amount in words</span>
+        <input class="blank" name="amount_words" id="words" placeholder="Filled in automatically"></label>
     </aside>
+  </div>
 
-    <div class="sign-row">
-      <label class="field">Received By (Landlord/Agent): <input class="blank" name="received_by"></label>
-      <div class="field">Signature:
-        <span class="sig-line"><img src="signature.png" alt="Signature"></span>
+  <div class="footer">
+    <label class="field"><span>Received By (Landlord / Agent)</span><input class="blank" name="received_by"></label>
+    <div class="field"><span>Signature</span>
+      <div class="sig-line">
+        <img src="signature.png" alt="Signature">
       </div>
     </div>
+    <p class="note">This is to confirm receipt of rent payment for the period stated above. Please retain this receipt for your records.</p>
+  </div>
 
+  <div class="strip">
+    <span><b>Thank you for your payment.</b> Kasule Estate — providing housing for generations.</span>
+    <span>rodgers.kasule@outlook.com</span>
   </div>
 </form>
 
 <script>
-  // Fill "Total Paid" from the three charges (it stays editable).
+  const form = document.getElementById('receipt-form');
   const amounts = document.querySelectorAll('input.amount');
   const total = document.getElementById('total');
+  const words = document.getElementById('words');
 
+  const num = s => parseFloat(String(s).replace(/,/g, ''));
+
+  // ---- Amount in words (UGX) ----
+  const ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+    'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+  function below1000(n) {
+    let out = [];
+    if (n >= 100) { out.push(ONES[Math.floor(n / 100)] + ' Hundred'); n %= 100; }
+    if (n >= 20) { out.push(TENS[Math.floor(n / 10)] + (n % 10 ? '-' + ONES[n % 10] : '')); }
+    else if (n > 0) { out.push(ONES[n]); }
+    return out.join(' ');
+  }
+
+  function toWords(n) {
+    n = Math.floor(n);
+    if (!isFinite(n) || n < 0) return '';
+    if (n === 0) return 'Zero';
+    const scales = [[1e12, 'Trillion'], [1e9, 'Billion'], [1e6, 'Million'], [1e3, 'Thousand']];
+    let out = [];
+    for (const [v, name] of scales) {
+      if (n >= v) { out.push(below1000(Math.floor(n / v)) + ' ' + name); n %= v; }
+    }
+    if (n > 0) out.push(below1000(n));
+    return out.join(' ');
+  }
+
+  function updateWords() {
+    const v = num(total.value);
+    words.value = isNaN(v) ? '' : toWords(v) + ' Uganda Shillings Only';
+  }
+
+  // ---- Total Paid = sum of charges (still editable) ----
   function updateTotal() {
     let sum = 0, any = false;
     amounts.forEach(i => {
-      const v = parseFloat(i.value.replace(/,/g, ''));
+      const v = num(i.value);
       if (!isNaN(v)) { sum += v; any = true; }
     });
-    total.value = any ? sum.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    total.value = any ? sum.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '';
+    updateWords();
   }
 
   amounts.forEach(i => i.addEventListener('input', updateTotal));
+  total.addEventListener('input', updateWords);
 
-  // Show amounts with thousands separators (60000000 -> 60,000,000) when leaving a box.
-  document.querySelectorAll('.summary input').forEach(i => i.addEventListener('blur', () => {
-    const v = parseFloat(i.value.replace(/,/g, ''));
-    if (!isNaN(v)) i.value = v.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  // Thousands separators when leaving an amount box (60000000 -> 60,000,000)
+  document.querySelectorAll('.money input').forEach(i => i.addEventListener('blur', () => {
+    const v = num(i.value);
+    if (!isNaN(v)) i.value = v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   }));
+
+  // ---- Dates: type digits, slashes are added (25112026 -> 25/11/2026) ----
+  document.querySelectorAll('input.date').forEach(i => i.addEventListener('input', e => {
+    if (e.inputType && e.inputType.startsWith('delete')) return;
+    const d = i.value.replace(/\D/g, '').slice(0, 8);
+    i.value = d.length > 4 ? `${d.slice(0, 2)}/${d.slice(2, 4)}/${d.slice(4)}`
+            : d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d;
+  }));
+
+  // Date Issued defaults to today
+  function setToday() {
+    const t = new Date();
+    document.getElementById('date-issued').value =
+      String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear();
+  }
+  setToday();
+
+  document.getElementById('clear-btn').addEventListener('click', () => {
+    form.reset();
+    setToday();
+    updateTotal();
+  });
 </script>
 </body>
 </html>
