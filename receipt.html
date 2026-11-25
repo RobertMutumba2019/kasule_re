@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent Payment Receipt | Kasule Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Arimo:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d5089;
+    --ink: #111;
+    --line: #222;
+    --paper: #fff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 16px;
+    background: #e9edf2;
+    font-family: "Arimo", Arial, Helvetica, sans-serif;
+    color: var(--ink);
+  }
+
+  .receipt {
+    width: 1100px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
+    padding-bottom: 24px;
+  }
+
+  /* ---------- Header ---------- */
+  .header {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 32px 6px 36px;
+  }
+
+  .logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .brand { text-align: center; }
+
+  .brand h1 {
+    margin: 0;
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+
+  .brand .tagline {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-style: italic;
+    font-size: 22px;
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .contacts .divider {
+    width: 3px;
+    height: 20px;
+    border-radius: 2px;
+    background: var(--navy);
+  }
+
+  .banner {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    padding: 4px 0 2px;
+  }
+
+  /* ---------- Body ---------- */
+  .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 0 28px;
+    padding: 20px 24px 0 30px;
+  }
+
+  .top-row {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    font-size: 18px;
+  }
+
+  .field {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 21px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+
+  .field.label-only { margin-bottom: 14px; }
+
+  input.blank {
+    flex: 1;
+    min-width: 40px;
+    border: 0;
+    border-bottom: 1.5px solid var(--line);
+    background: transparent;
+    font: inherit;
+    font-size: .95em;
+    padding: 0 4px 1px;
+    color: #0b3d6b;
+    outline: none;
+  }
+
+  input.blank:focus { border-bottom-color: var(--navy); background: #f2f7fc; }
+
+  input.short { flex: 0 0 120px; }
+  input.date-d, input.date-m { flex: 0 1 72px; text-align: center; }
+  input.date-y { flex: 0 1 92px; text-align: center; }
+  .payment-date input.date-d { flex: 0 1 100px; }
+  .payment-date input.date-m { flex: 0 1 180px; }
+  .payment-date input.date-y { flex: 0 1 190px; }
+  .issued input.date-d { flex: 0 1 72px; }
+  .issued input.date-m, .issued input.date-y { flex: 0 1 92px; }
+
+  .sep { padding-bottom: 2px; }
+
+  /* ---------- Payment summary ---------- */
+  .summary { padding-top: 2px; }
+
+  .summary h2 {
+    margin: 0 0 14px;
+    background: var(--navy);
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    padding: 10px 16px;
+  }
+
+  .summary .row {
+    display: grid;
+    grid-template-columns: 1fr 215px;
+    align-items: flex-end;
+    padding: 0 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+  }
+
+  .summary .money {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .summary .money input { text-align: right; }
+
+  .summary .row.total { font-weight: 600; }
+
+  .note {
+    margin: 6px 22px 0;
+    border: 3px solid var(--navy);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 15.5px;
+    line-height: 1.35;
+  }
+
+  .sign-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 14px;
+    margin-top: 44px;
+  }
+
+  .sign-row .field { margin-bottom: 0; }
+
+  .sig-line {
+    flex: 1;
+    min-width: 40px;
+    height: 34px;
+    border-bottom: 1.5px solid var(--line);
+    position: relative;
+  }
+
+  .sig-line img {
+    position: absolute;
+    left: 24px;
+    bottom: -16px;
+    height: 84px;
+    width: auto;
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar {
+    width: 1100px;
+    max-width: 100%;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .toolbar button {
+    font: 600 15px "Arimo", Arial, sans-serif;
+    border: 0;
+    border-radius: 6px;
+    padding: 9px 18px;
+    cursor: pointer;
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .toolbar button.secondary { background: #fff; color: var(--navy); border: 1.5px solid var(--navy); }
+
+  /* ---------- Print ---------- */
+  @page { size: A4 landscape; margin: 8mm; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .toolbar { display: none; }
+    .receipt { box-shadow: none; width: 100%; padding-bottom: 0; }
+    input.blank:focus { background: transparent; }
+    .banner, .summary h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* Compact layout so the whole receipt fits on one A4 landscape page */
+    html, body { height: auto; }
+    .receipt { break-inside: avoid; page-break-inside: avoid; }
+    .header { grid-template-columns: 180px 1fr; padding: 6px 24px 6px 28px; gap: 18px; }    .brand h1 { font-size: 34px; }
+    .brand .tagline { font-size: 20px; margin: 0 0 8px; }
+    .contacts { font-size: 14px; line-height: 1.4; }
+    .banner { font-size: 26px; padding: 4px 0 2px; }
+    .content { padding: 18px 20px 0 24px; }
+    .top-row { margin-bottom: 16px; }
+    .field { font-size: 18px; margin-bottom: 20px; }
+    .field.label-only { margin-bottom: 14px; }
+    .details label.field[style] { margin-top: 24px !important; }
+    .summary h2 { font-size: 19px; padding: 7px 14px; margin-bottom: 10px; }
+    .summary .row { font-size: 18px; margin-bottom: 18px; }
+    .note { font-size: 13.5px; padding: 8px 12px; }
+    .sign-row { margin-top: 48px; }
+    .sig-line { height: 28px; }
+    .sig-line img { height: 72px; bottom: -14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button type="button" class="secondary" onclick="document.getElementById('receipt-form').reset(); updateTotal();">Clear</button>
+  <button type="button" onclick="window.print()">Print receipt</button>
+</div>
+
+<form class="receipt" id="receipt-form" autocomplete="off" onsubmit="return false">
+
+  <header class="header">
+    <div class="logo">
+      <img src="kasule-logo.png" alt="Kasule Estates logo">
+    </div>
+    <div class="brand">
+      <h1>KASULE ESTATE</h1>
+      <p class="tagline">"Making your dream come true"</p>
+      <div class="contacts">
+        <span>📞 +256 771 856 925 / +256 702 554 664</span>
+        <span class="divider"></span>
+        <span>📧 rodgers.kasule@outlook.com</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="banner">RENT PAYMENT RECEIPT</div>
+
+  <div class="content">
+
+    <div class="top-row">
+      <label class="field" style="margin:0">Receipt No.:
+        <input class="blank short" name="receipt_no">
+      </label>
+      <div class="field issued" style="margin:0">Date Issued:
+        <input class="blank date-d" name="issued_day" aria-label="Day issued">
+        <span class="sep">/</span>
+        <input class="blank date-m" name="issued_month" aria-label="Month issued">
+        <span class="sep">/</span>
+        <input class="blank date-y" name="issued_year" aria-label="Year issued">
+      </div>
+    </div>
+
+    <div class="details">
+      <label class="field">Tenant Name: <input class="blank" name="tenant_name"></label>
+      <label class="field">Rental Property Address: <input class="blank" name="property_address"></label>
+
+      <div class="field label-only">Payment Period:</div>
+      <div class="field">From
+        <input class="blank date-d" name="from_day" aria-label="From day">
+        <span class="sep">/</span>
+        <input class="blank date-m" name="from_month" aria-label="From month">
+        <span class="sep">/</span>
+        <input class="blank date-y" name="from_year" aria-label="From year">
+        <span style="padding:0 4px 2px">to</span>
+        <input class="blank date-d" name="to_day" aria-label="To day">
+        <span class="sep">/</span>
+        <input class="blank date-m" name="to_month" aria-label="To month">
+        <span class="sep">/</span>
+        <input class="blank date-y" name="to_year" aria-label="To year">
+      </div>
+
+      <label class="field" style="margin-top:24px">Payment Method: <input class="blank" name="payment_method"></label>
+
+      <div class="field payment-date">Payment Date:
+        <input class="blank date-d" name="pay_day" aria-label="Payment day">
+        <span class="sep">/</span>
+        <input class="blank date-m" name="pay_month" aria-label="Payment month">
+        <span class="sep">/</span>
+        <input class="blank date-y" name="pay_year" aria-label="Payment year">
+      </div>
+    </div>
+
+    <aside class="summary">
+      <h2>💵 Payment Summary</h2>
+      <div class="row"><span>Monthly Rent</span>
+        <span class="money">UGX <input class="blank amount" name="monthly_rent" inputmode="decimal"></span></div>
+      <div class="row"><span>Late Fee</span>
+        <span class="money">UGX <input class="blank amount" name="late_fee" inputmode="decimal"></span></div>
+      <div class="row"><span>Other Charges</span>
+        <span class="money">UGX <input class="blank amount" name="other_charges" inputmode="decimal"></span></div>
+      <div class="row total"><span>Total Paid</span>
+        <span class="money">UGX <input class="blank" name="total_paid" id="total" inputmode="decimal"></span></div>
+      <p class="note">This is to confirm receipt of rent payment for the period stated above. Please retain this receipt for your records.</p>
+    </aside>
+
+    <div class="sign-row">
+      <label class="field">Received By (Landlord/Agent): <input class="blank" name="received_by"></label>
+      <div class="field">Signature:
+        <span class="sig-line"><img src="signature.png" alt="Signature"></span>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<script>
+  // Fill "Total Paid" from the three charges (it stays editable).
+  const amounts = document.querySelectorAll('input.amount');
+  const total = document.getElementById('total');
+
+  function updateTotal() {
+    let sum = 0, any = false;
+    amounts.forEach(i => {
+      const v = parseFloat(i.value.replace(/,/g, ''));
+      if (!isNaN(v)) { sum += v; any = true; }
+    });
+    total.value = any ? sum.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+  }
+
+  amounts.forEach(i => i.addEventListener('input', updateTotal));
+
+  // Show amounts with thousands separators (60000000 -> 60,000,000) when leaving a box.
+  document.querySelectorAll('.summary input').forEach(i => i.addEventListener('blur', () => {
+    const v = parseFloat(i.value.replace(/,/g, ''));
+    if (!isNaN(v)) i.value = v.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  }));
+</script>
+</body>
+</html>
