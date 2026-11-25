@@ -236,6 +236,65 @@
 
   .toolbar button.secondary { background: #fff; color: var(--navy); border: 1.5px solid var(--navy); }
 
+  /* On desktop/print the date groups don't affect layout */
+  .date-group { display: contents; }
+
+  /* ---------- Tablet (screen only, print is untouched) ---------- */
+  @media screen and (max-width: 900px) {
+    body { padding: 16px 12px; }
+    .header { grid-template-columns: 140px 1fr; padding: 10px 20px; gap: 16px; }
+    .brand h1 { font-size: 30px; }
+    .brand .tagline { font-size: 19px; }
+    .contacts { font-size: 15px; }
+    .banner { font-size: 22px; }
+
+    /* Stack the Payment Summary under the details instead of beside them */
+    .content { grid-template-columns: minmax(0, 1fr); padding: 18px 20px 0; }
+    .summary { margin-top: 8px; }
+    .field, .summary .row { font-size: 18px; }
+  }
+
+  /* ---------- Phone ---------- */
+  @media screen and (max-width: 600px) {
+    body { padding: 12px 8px; }
+    .toolbar button { flex: 1; }
+
+    .header { grid-template-columns: 1fr; justify-items: center; gap: 6px; padding: 12px 16px 8px; }
+    .logo { width: 110px; }
+    .brand h1 { font-size: 24px; }
+    .brand .tagline { font-size: 16px; margin-bottom: 6px; }
+    .contacts { flex-direction: column; gap: 2px; font-size: 14px; white-space: normal; }
+    .contacts .divider { display: none; }
+    .banner { font-size: 17px; letter-spacing: 1px; padding: 6px 0 4px; }
+
+    .content { padding: 16px 14px 0; }
+    .top-row { flex-direction: column; gap: 14px; font-size: 16px; }
+
+    /* Let fields wrap: the label sits above full-width text inputs */
+    .field { flex-wrap: wrap; white-space: normal; font-size: 16px; margin-bottom: 16px; gap: 4px 6px; }
+    .field > input.blank:not(.date-d):not(.date-m):not(.date-y) { flex: 1 1 100%; }
+
+    /* 16px inputs stop iPhones zooming in on tap */
+    input.blank { font-size: 16px; padding-bottom: 3px; }
+
+    /* Date boxes share the available width */
+    .field input.date-d, .field input.date-m, .field input.date-y,
+    .payment-date input.date-d, .payment-date input.date-m, .payment-date input.date-y,
+    .issued input.date-d, .issued input.date-m, .issued input.date-y { flex: 1 1 0; min-width: 0; }
+
+    /* Payment period: "From" date and "to" date on their own lines */
+    .period .date-group { display: flex; align-items: flex-end; gap: 6px; width: 100%; }
+    .period .date-label { flex: 0 0 42px; padding: 0 0 2px !important; }
+
+    .summary h2 { font-size: 18px; padding: 8px 12px; }
+    .summary .row { grid-template-columns: 1fr minmax(0, 58%); font-size: 16px; padding: 0 4px; margin-bottom: 14px; }
+    .summary .money input { min-width: 0; }
+    .note { margin: 6px 0 0; font-size: 14px; }
+
+    .sign-row { grid-template-columns: 1fr; gap: 28px; margin-top: 28px; }
+    .sig-line img { height: 64px; bottom: -12px; left: 12px; }
+  }
+
   /* ---------- Print ---------- */
   @page { size: A4 landscape; margin: 8mm; }
 
@@ -313,18 +372,21 @@
       <label class="field">Rental Property Address: <input class="blank" name="property_address"></label>
 
       <div class="field label-only">Payment Period:</div>
-      <div class="field">From
-        <input class="blank date-d" name="from_day" aria-label="From day">
-        <span class="sep">/</span>
-        <input class="blank date-m" name="from_month" aria-label="From month">
-        <span class="sep">/</span>
-        <input class="blank date-y" name="from_year" aria-label="From year">
-        <span style="padding:0 4px 2px">to</span>
-        <input class="blank date-d" name="to_day" aria-label="To day">
-        <span class="sep">/</span>
-        <input class="blank date-m" name="to_month" aria-label="To month">
-        <span class="sep">/</span>
-        <input class="blank date-y" name="to_year" aria-label="To year">
+      <div class="field period">
+        <span class="date-group"><span class="date-label">From</span>
+          <input class="blank date-d" name="from_day" aria-label="From day">
+          <span class="sep">/</span>
+          <input class="blank date-m" name="from_month" aria-label="From month">
+          <span class="sep">/</span>
+          <input class="blank date-y" name="from_year" aria-label="From year">
+        </span>
+        <span class="date-group"><span class="date-label" style="padding:0 4px 2px">to</span>
+          <input class="blank date-d" name="to_day" aria-label="To day">
+          <span class="sep">/</span>
+          <input class="blank date-m" name="to_month" aria-label="To month">
+          <span class="sep">/</span>
+          <input class="blank date-y" name="to_year" aria-label="To year">
+        </span>
       </div>
 
       <label class="field" style="margin-top:24px">Payment Method: <input class="blank" name="payment_method"></label>
